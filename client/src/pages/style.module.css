@@ -1,0 +1,13 @@
+.posts-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  height: calc(100vh - 107px);
+}
+
+.posts-title {
+  color: var(--black);
+  font-weight: normal;
+}

@@ -1,0 +1,22 @@
+.header-navigaion-list {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.header-navigatioin-item {
+  list-style: none;
+}
+
+.header-navigatioin-link {
+  color: var(--white);
+  font-size: 20px;
+  letter-spacing: 1px;
+  text-decoration: none;
+}
+
+.header-navigatioin-link:hover {
+  color: var(--orange);
+
+  transition: color 0.3s;
+}

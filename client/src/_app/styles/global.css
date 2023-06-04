@@ -1,13 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Condensed:wght@400;700&display=swap');
 
-
 :root {
   --black: #1f2633;
   --white: #fff;
   --orange: #ff6148;
-  --deepGray: #333333;
-  --dullGray: #bdbdbd;
-  --darkGray: #4f4f4f;
+  --deep-gray: #333;
+  --dull-gray: #bdbdbd;
+  --dark-gray: #4f4f4f;
   --gray: #f2f2f2;
   --gray200: #e3e3e3;
   --gray300: #828282;

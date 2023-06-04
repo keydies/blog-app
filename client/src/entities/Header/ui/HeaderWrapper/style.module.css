@@ -1,0 +1,16 @@
+.header {
+  background-color: var(--black);
+}
+
+.header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-logo {
+  color: var(--white);
+  font-size: 24px;
+  letter-spacing: 1px;
+  text-decoration: none;
+}
