@@ -1,6 +1,17 @@
-.login {
+.post {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  height: calc(100vh - 107px);
+}
+
+.post-wrapper {
   width: 400px;
   padding: 20px 40px;
+
+  color: var(--black);
 
   border-radius: 12px;
 
@@ -9,21 +20,15 @@
   box-shadow: rgb(0 0 0 / 2%) 0 1px 3px 0, rgb(27 31 35 / 15%) 0 0 0 1px;
 }
 
-.login-title {
-  margin: 0;
-
-  font-size: 24px;
-  text-align: center;
+.comment {
+  border-bottom: 1px solid var(--gray200);
 }
 
-.login-field-wrapper {
-  display: flex;
-  flex-direction: column;
-
-  border: none;
+.comment-title {
+  margin: 10px 0 0;
 }
 
-.login-field {
+.post-new-comment-input {
   margin-top: 5px;
   padding: 10px 20px 10px 5px;
 
@@ -37,8 +42,9 @@
   box-shadow: rgb(0 0 0 / 2%) 0 1px 3px 0, rgb(27 31 35 / 15%) 0 0 0 1px;
 }
 
-.login-submit-button {
-  padding: 10px 0;
+.post-new-comment-button {
+  margin-left: 10px;
+  padding: 10px;
 
   border: none;
   border-radius: 6px;
@@ -48,20 +54,6 @@
   box-shadow: rgb(0 0 0 / 2%) 0 1px 3px 0, rgb(27 31 35 / 15%) 0 0 0 1px;
 }
 
-.login-submit-button:hover {
-  cursor: pointer;
-}
-
-.login-forgot-button {
-  margin-bottom: 5px;
-
-  border: none;
-
-  background-color: var(--gray);
-
-  outline: none;
-}
-
-.login-forgot-button:hover {
+.post-new-comment-button:hover {
   cursor: pointer;
 }

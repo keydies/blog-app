@@ -7,6 +7,8 @@ import { PostData } from '@features/CreatePost/types/PostData';
 
 import { useTypedDispatch } from '@shared/hooks/useTypedDispatch';
 
+import axios from 'axios';
+
 import styles from './style.module.css';
 
 export const CreatePost = () => {
@@ -26,9 +28,12 @@ export const CreatePost = () => {
     }));
   };
 
-  const onCreateNewPostHandler = () => {
+  const onCreateNewPostHandler = async () => {
     if (postData.title && postData.description && postData.body) {
       dispatch(setNewPost(postData));
+      const newPost = await axios.post('http://localhost:8000/posts/add-post', {
+        ...postData,
+      });
       setPostData({ title: '', description: '', body: '' });
       alert('Blog Post posted successfully!');
     }

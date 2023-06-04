@@ -1,9 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+export interface Comment {
+  author: string;
+  body: string;
+}
 export interface Post {
+  _id?: string;
   title: string;
   description: string;
   body: string;
+  comments: Array<Comment>;
 }
 
 interface PostState {
@@ -16,6 +22,7 @@ const initialState: PostState = {
     title: '',
     description: '',
     body: '',
+    comments: [],
   },
   posts: [],
 };
@@ -26,7 +33,9 @@ export const PostSlice = createSlice({
   reducers: {
     setNewPost(state, action: PayloadAction<Post>) {
       state.newPost = action.payload;
-      state.posts.push(action.payload);
+    },
+    setPosts(state, action: PayloadAction<Post[]>) {
+      state.posts = action.payload;
     },
   },
 });

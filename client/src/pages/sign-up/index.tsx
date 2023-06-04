@@ -2,14 +2,14 @@ import React from 'react';
 
 import { NextPage } from 'next';
 
-import { SignInForm } from '@features/SignInForm/ui';
+import { SignUpForm } from '@features/SignUpForm/ui';
 
 import styles from './style.module.css';
 
 const SignIn: NextPage = () => {
   return (
-    <section className={styles['sign-in-wrapper']}>
-      <SignInForm />
+    <section className={styles['sign-up-wrapper']}>
+      <SignUpForm />
     </section>
   );
 };

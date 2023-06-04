@@ -1,13 +1,23 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 
-import { UserProfileData } from '@features/UserProfile/types/UserProfileData';
+import { UserData, UserSlice } from '@app/store/reducers/UserSlice';
+
 import { UserProfileInputLabels } from '@features/UserProfile/types/UserProfileInputLabels';
+
+import { useTypedDispatch } from '@shared/hooks/useTypedDispatch';
+import { useTypedSelector } from '@shared/hooks/useTypedSelector';
+
+import axios from 'axios';
 
 import styles from './style.module.css';
 
 export const UserProfile = () => {
+  const dispatch = useTypedDispatch();
+  const { setUserData } = UserSlice.actions;
+  const userData = useTypedSelector((state) => state.userReducer.userData);
+
   const [isEditModeActive, setIsEditModeActive] = useState(false);
-  const [userProfileData, setUserProfileData] = useState<UserProfileData>({
+  const [userProfileData, setUserProfileData] = useState<UserData>({
     firstName: '',
     lastName: '',
     age: '',
@@ -17,7 +27,7 @@ export const UserProfile = () => {
   });
 
   const onProfileDataInputChangeHandler = (label: string, value: string) => {
-    setUserProfileData((prevState: UserProfileData) => ({
+    setUserProfileData((prevState: UserData) => ({
       ...prevState,
       [label]: value,
     }));
@@ -25,7 +35,24 @@ export const UserProfile = () => {
 
   const onToggleEditModeHandler = () => {
     setIsEditModeActive(!isEditModeActive);
+    if (isEditModeActive) {
+      onEditUserProfileHandler();
+    }
   };
+
+  const onEditUserProfileHandler = async () => {
+    const updatedUserData = await axios
+      .put('http://localhost:8000/user/update-data', {
+        ...userProfileData,
+        _id: userData._id,
+      })
+      .then((response) => response.data);
+    dispatch(setUserData(updatedUserData));
+  };
+
+  useEffect(() => {
+    setUserProfileData(userData);
+  }, [userData]);
 
   return (
     <section className={styles['user-profile']}>
@@ -57,7 +84,7 @@ export const UserProfile = () => {
             </Fragment>
           ) : (
             <Fragment>
-              <p className={styles['user-profile-value']}>{userProfileData.firstName}</p>
+              <p className={styles['user-profile-value']}>{userData.firstName}</p>
             </Fragment>
           )}
         </fieldset>
@@ -77,7 +104,7 @@ export const UserProfile = () => {
             </Fragment>
           ) : (
             <Fragment>
-              <p className={styles['user-profile-value']}>{userProfileData.lastName}</p>
+              <p className={styles['user-profile-value']}>{userData.lastName}</p>
             </Fragment>
           )}
         </fieldset>
@@ -97,7 +124,7 @@ export const UserProfile = () => {
             </Fragment>
           ) : (
             <Fragment>
-              <p className={styles['user-profile-value']}>{userProfileData.age}</p>
+              <p className={styles['user-profile-value']}>{userData.age}</p>
             </Fragment>
           )}
         </fieldset>
@@ -117,7 +144,7 @@ export const UserProfile = () => {
             </Fragment>
           ) : (
             <Fragment>
-              <p className={styles['user-profile-value']}>{userProfileData.gender}</p>
+              <p className={styles['user-profile-value']}>{userData.gender}</p>
             </Fragment>
           )}
         </fieldset>
@@ -137,7 +164,7 @@ export const UserProfile = () => {
             </Fragment>
           ) : (
             <Fragment>
-              <p className={styles['user-profile-value']}>{userProfileData.address}</p>
+              <p className={styles['user-profile-value']}>{userData.address}</p>
             </Fragment>
           )}
         </fieldset>
@@ -157,7 +184,7 @@ export const UserProfile = () => {
             </Fragment>
           ) : (
             <Fragment>
-              <p className={styles['user-profile-value']}>{userProfileData.website}</p>
+              <p className={styles['user-profile-value']}>{userData.website}</p>
             </Fragment>
           )}
         </fieldset>

@@ -47,8 +47,8 @@ export const HeaderNavigation = () => {
             </Link>
           </li>
           <li className={styles['header-navigatioin-item']}>
-            <Link className={styles['header-navigatioin-link']} href={RouteNames.SIGNIN}>
-              Sign In
+            <Link className={styles['header-navigatioin-link']} href={RouteNames.SIGNUP}>
+              Sign Up
             </Link>
           </li>
         </Fragment>

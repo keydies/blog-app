@@ -1,4 +1,3 @@
-import { compare } from 'bcryptjs';
 import { LoginBody } from '../controllers/Auth.controller';
 import { ErrorResponse } from '../interfaces/Error.interfaces';
 import { UserBody } from '../interfaces/User.interfaces';
@@ -15,7 +14,7 @@ class AuthService {
         if (!candidate) {
             return ErrorHandler(HttpStatusCode.BAD_REQUEST, HttpMessageResponse.USER_IS_NOT_FOUND);
         } else {
-            const isValidPassword: boolean = await compare(password, candidate.password);
+            const isValidPassword: boolean = password === candidate.password;
 
             if (isValidPassword) {
                 return candidate;
