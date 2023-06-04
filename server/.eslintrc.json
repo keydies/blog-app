@@ -1,0 +1,19 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "parser": "@typescript-eslint/parser",
+    "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+    "overrides": [],
+    "rules": {
+        "@typescript-eslint/ban-ts-comment": "warn",
+        "@typescript-eslint/dot-notation": "error",
+        "no-var": "error",
+        "semi": "warn",
+        "no-multi-spaces": "error",
+        "space-in-parens": "error",
+        "no-multiple-empty-lines": "warn",
+        "prefer-const": "warn"
+    }
+}
